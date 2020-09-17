@@ -5,22 +5,20 @@ import "./MessageForm.css"
 const MessageForm = () => {
 	const [state, setState] = useState({
 		username: "",
-		title: "",
 		data: ""
 	})
 	const { username, title, data } = state
 	const handleSubmit = (e) => {
 		e.preventDefault()
-		if (username.length && title.length && data.length) {
+		if (username.length && data.length) {
 			db.collection("messages").add({
-				title,
 				username,
+				time: Date.now(),
 				data
 			})
 		}
 		setState({
 			username: "",
-			title: "",
 			data: ""
 		})
 	}
@@ -36,11 +34,9 @@ const MessageForm = () => {
 			onSubmit={handleSubmit}>
 			<label htmlFor="username">Nom d'utilisateur</label>
 			<input type="text" name="username" placeholder="Écrire ici" value={username} onChange={handleChange}></input>
-			<label htmlFor="title">Titre du message</label>
-			<input type="text" name="title" placeholder="Écrire ici" value={title} onChange={handleChange}></input>
 			<label htmlFor="data">Texte</label>
 			<textarea type="text" name="data" placeholder="Écrire ici" value={data} onChange={handleChange}></textarea>
-			<button type="submit">Envoyer</button>
+			<button type="submit">Envoyer le pigeon voyageur</button>
 		</form>
 	);
 }

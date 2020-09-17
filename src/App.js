@@ -6,7 +6,10 @@ import MessagesList from './components/MessagesList/MessagesList';
 function App() {
 	return (
 		<section className="App">
-			<h1>Message Board</h1>
+			<div className="title-wrap">
+				<h1>Message Board</h1>
+				<p>v4.2.0</p>
+			</div>
 			<MessageForm />
 			<MessagesList />
 		</section>
